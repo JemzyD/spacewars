@@ -2,7 +2,7 @@
 // The Object.keys() method returns an array of a given object's property names, in the same order as we get with a normal loop.
 // The includes() method determines whether an array includes a certain element, returning true or false as appropriate.
 
-var checkPlayer
+var checkPlayer;
 
 function player1Timer() {
     clearInterval(checkPlayer)
@@ -11,7 +11,7 @@ checkPlayer = setInterval(function () {
     computerPlayer()
   }
 }, 5000)
-}
+};
 
 // computer logic
 // still playing too many cards
@@ -66,8 +66,8 @@ function computerPlayer () {
 
       if (game.player[0].moves[0] === 'defuse') {
         if (Object.keys(currentCards).includes('see-the-future')) { currentCards['see-the-future'] += 100 * randomness() }
-        if (Object.keys(currentCards).includes('aggro')) { currentCards['aggro'] += 80 * randomness() }
-        if (Object.keys(currentCards).includes('force-run')) { currentCards['force-run'] += 100 * randomness() }
+        if (Object.keys(currentCards).includes('force-run')) { currentCards['force-run'] += 80 * randomness() }
+        if (Object.keys(currentCards).includes('force-push')) { currentCards['force-push'] += 100 * randomness() }
         currentCards['draw'] += 80 * randomness()
       }
 
@@ -86,7 +86,7 @@ function computerPlayer () {
         currentCards['draw'] += 10
       }
 
-      if (1 / game.drawingPile.length > 0.20 && game.knownCards.length === 0) {
+      if (1 / drawingPile.length > 0.20 && game.knownCards.length === 0) {
         if (Object.keys(currentCards).includes('see-the-future')) { currentCards['see-the-future'] += 100 * randomness() }
       }
 
@@ -115,7 +115,7 @@ function computerPlayer () {
         }
       }
 
-      if (1 / game.drawingPile.length === 1) {
+      if (1 / drawingPile.length === 1) {
         currentCards['draw'] -= 200
       }
 
@@ -129,7 +129,7 @@ function computerPlayer () {
         }
       }
     }
-  }
+  };
 
   var max = ['', -500]
   for (var key in currentCards) {
@@ -137,7 +137,7 @@ function computerPlayer () {
       max[0] = key
       max[1] = currentCards[key]
     }
-  }
+  };
 
   console.log('ai')
   if (max[0] === 'draw') {
@@ -149,14 +149,15 @@ function computerPlayer () {
         break
       }
     }
+    // drawCard();
   }
-}
+};
 
-// returns a random number from 0-1
+// returns a random number from 0.5-1
 function randomness () {
   var randomValue = Math.random()
   if (randomValue < 0.5) {
-    randomValue += 0.5
+    randomValue += 0.1
   }
   return randomValue
-}
+};

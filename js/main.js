@@ -10,7 +10,7 @@
 // To ensure volatility of the virtual player, I added some randomness to each score assigned.
 
 
-  var game = new totalGame()
+  var game = new totalGame();
 // Main Event Listener using AJAX and jQuery
 // use this method easier for game
 // A new object is created — the first object.
@@ -36,10 +36,10 @@
       // to make the cards move respectively
       // The bind() method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called
       // try to animate the cards with jQuery but aint working
-      var positiony = $(this).position().top
-      var positionx = $(this).position().left
-      var desy = ($('.discardPile').position().top + 200) / 10
-      var desx = ($('.discardPile').position().left + parseInt($('.discardPile').css('height')) - $('.player0Cards').position().left - positionx) / 10
+      var positiony = $(this).position().top;
+      var positionx = $(this).position().left;
+      var desy = ($('.discardPile').position().top + 200) / 10;
+      var desx = ($('.discardPile').position().left + parseInt($('.discardPile').css('height')) - $('.player0Cards').position().left - positionx) / 10;
 
       if (game.currentPlayer === 0 && game.isGameOver === false) {
         clearInterval(moveInterval)
@@ -75,7 +75,7 @@
       } else {
         alert('Hold Up! It\'s not your turn yet!');
       }
-    })
+    });
 
   // DrawingPile click
     $('.container').off('click', '.drawingPile')
@@ -102,7 +102,7 @@
           }
         }, 1000 / 30)
       }
-    })
+    });
 
   // select
   // to insert the death star card. Make sure i account for the card
@@ -111,7 +111,7 @@
       console.log('index', index)
       game.insertDeathStar((index - 1))
       $('.select').hide()
-    })
+    });
 
   // -------------Game Page End----------------------
 
@@ -127,7 +127,7 @@
       $('#avatar1').removeAttr('style')
       clearInterval(countDown)
       game.restart()
-    })
+    });
 
   // -------------Game Over End----------------------
 
@@ -141,7 +141,7 @@
     function () {
       $('.cards p').text('')
     }
-  )
+  );
 
   // startGame Button
     $('.play button').click(function () {
@@ -150,10 +150,10 @@
       game.startGame()
       updateNotice()
       updateCards()
-    })
+    });
 
   // ---------------Main Page End---------------------
-  })
+  });
 
 // Update Game Interface
   function updateDisplay () {
@@ -244,12 +244,12 @@
       }
     }, 3000)
 
-    $('.explosive-meter h1').text(Math.round(1 / game.drawingPile.length * 100) + ' %')
+    $('.explosive-meter h1').text(Math.round(drawingPile.length) + ' cards')
   }
 
   function updateCards () {
     var align = 0
-    for (var i = 0; i < game.drawingPile.length; i++) {
+    for (var i = 0; i < drawingPile.length; i++) {
   //  alert($('.drawingPile').length)
       $('.relative').append('<div class="drawingPile">')
       $('.drawingPile:nth-child(' + (i + 1) + ')').css({
@@ -275,7 +275,7 @@
 
     for (var i = 0; i < game.player[1].cards.length; i++) {
       $('.player1').prepend('<div class="player1Cards"></div>')
-    }
+    };
 
   // Player hover over selected card
 
@@ -298,43 +298,43 @@
       'bottom': 0
     })
   })
-  }
+  };
 
   function updateTime () {
     $('#time').text(Math.ceil(time))
-  }
+  };
 
   function showTopCards () {
     console.log('Showing Top Cards')
     var length = 3
-    if (game.drawingPile.length < length) {
-      length = game.drawingPile.length
+    if (drawingPile.length < length) {
+      length = drawingPile.length
     }
 
     $('.seeTheFutureBoard div').removeAttr('id')
     for (var i = 0; i < length; i++) {
-      $('.seeTheFutureBoard div:nth-child(' + (i + 2) + ')').attr('id', game.drawingPile[i].type)
+      $('.seeTheFutureBoard div:nth-child(' + (i + 2) + ')').attr('id', drawingPile[i].type)
     }
 
     $('.seeTheFutureBoard').fadeIn()
     $('.seeTheFutureBoard').delay(2000).fadeOut()
-  }
+  };
 
   function showYourTurn () {
   // if (game.currentPlayer === 1) {
     $('.yourTurn').delay(500).fadeIn()
     $('.yourTurn').delay(500).fadeOut()
   // }
-  }
+  };
 
   function showSelect () {
     $('.select').fadeIn()
-  }
+  };
 
 
   function player1Draw () {
-    var positiony = $('.drawingPile:last-child').position().top
-    var positionx = $('.drawingPile:last-child').position().left
+    var positiony = $('.drawingPile:last-child').position().top;
+    var positionx = $('.drawingPile:last-child').position().left;
     clearInterval(moveInterval)
     var moveInterval = setInterval(function () {
       positiony -= 20
@@ -349,4 +349,4 @@
         game.player[game.currentPlayer].drawCard(0)
       }
     }, 1000 / 30)
-  }
+  };

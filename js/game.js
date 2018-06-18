@@ -2,8 +2,9 @@
 // The shift() method removes the first element from an array and returns that removed element. 
 // The splice() method changes the contents of an array by removing existing elements and/or adding new elements.
 
+var drawingPile = [];
+
 function totalGame () {
-  this.drawingPile = []
   this.playedCards = []
   this.currentPlayer = 0
   this.isGameOver = false
@@ -12,62 +13,67 @@ function totalGame () {
   this.knownCards = []
   this.moves = []
   this.player = []
-}
+};
 
 totalGame.prototype.startGame = function () {
   this.player.push(new totalPlayer(), new totalPlayer())
 
   for (var i = 0; i < 4; i++) {
-    this.drawingPile.push(new forceRun())
-    this.drawingPile.push(new forcePush())
-    this.drawingPile.push(new seeTheFuture())
-    this.drawingPile.push(new attack())
-    this.drawingPile.push(new aggro())
-   this.drawingPile.push(new mindTrick())
+    drawingPile.push(new forceRun())
+    drawingPile.push(new forcePush())
+    drawingPile.push(new seeTheFuture())
+    drawingPile.push(new attack())
+    drawingPile.push(new aggro())
+   drawingPile.push(new mindTrick())
 
     if (i === 3) {
-      this.drawingPile.push(new defuse())
+      drawingPile.push(new defuse())
     }
-  }
+  };
 
   game.shuffle()
   for (var i = 0; i < this.player.length; i++) {
     for (var j = 0; j < 4; j++) {
-      this.player[i].cards.push(this.drawingPile[j])
-     this.drawingPile.shift()
+      this.player[i].cards.push(drawingPile[j])
+     drawingPile.shift()
     }
     this.player[i].cards.push(new defuse())
   }
 
-  this.drawingPile.push(new deathStar())
+  drawingPile.push(new deathStar())
   game.shuffle()
   console.log(this)
   player1Timer()
-}
+};
 
 totalGame.prototype.shuffle = function () {
-  var i = this.drawingPile.length - 1
+  console.log(drawingPile);
+  var i = drawingPile.length - 1;
   while (i > 0) {
-    num = Math.floor(Math.random() * this.drawingPile.length)
-    var temp = this.drawingPile[i]
-    this.drawingPile[i] = this.drawingPile[num]
-    this.drawingPile[num] = temp
-    i--
+    var num = Math.floor(Math.random() * drawingPile.length);
+    console.log(num);
+    var temp = drawingPile[i];
+    console.log(temp);
+    drawingPile[i] = drawingPile[num];
+    console.log(drawingPile[i], drawingPile[num]);
+    drawingPile[num] = temp;
+    console.log(drawingPile[i], drawingPile[num]);
+    i--;
   }
-}
+};
 
 totalGame.prototype.checkGameOver = function () {
   if (this.player[game.currentPlayer].cards.length === 0 ) {
     this.isGameOver = true
   }
   return this.isGameOver
-}
+};
 
 totalGame.prototype.whoWon = function () {
   console.log('start');
   return 1 - this.currentPlayer
 
-}
+};
 
 totalGame.prototype.switchPlayer = function () {
   if (this.currentPlayer === 1) {
@@ -76,10 +82,10 @@ totalGame.prototype.switchPlayer = function () {
   } else {
     this.currentPlayer = 1
   }
-}
+};
 
 totalGame.prototype.restart = function () {
-  this.drawingPile = []
+  drawingPile = []
   this.playedCards = []
   this.currentPlayer = 0
   this.isGameOver = false
@@ -88,13 +94,10 @@ totalGame.prototype.restart = function () {
   this.knownCards = []
   this.moves = []
   this.player = []
-  console.log('before', game)
   this.startGame()
   updateNotice()
   updateDisplay()
-  console.log(game)
-
-}
+};
 
 totalGame.prototype.checkTurns = function () {
   if (this.noOfTurn === 0) {
@@ -102,19 +105,19 @@ totalGame.prototype.checkTurns = function () {
   } else {
     this.noOfTurn -= 1
   }
-}
+};
 
 totalGame.prototype.insertDeathStar = function (index) {
-  var temp = this.drawingPile[0]
+  var temp = drawingPile[0]
 
   if (index >= 0 && index <= 2) {
-    this.drawingPile.shift()
-    this.drawingPile.splice(index, 0, temp)
+    drawingPile.shift()
+    drawingPile.splice(index, 0, temp)
   } else if (index === 3) {
-    this.drawingPile.shift()
-    this.drawingPile.push(temp)
+    drawingPile.shift()
+  .drawingPile.push(temp)
   } else if (index === 4) {
     this.shuffle()
   }
   this.checkTurns()
-}
+};

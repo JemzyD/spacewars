@@ -220,6 +220,11 @@ button {
 
 .notice h1 {
   margin: 0;
+  color: white;
+}
+
+.notice h3 {
+  color: white;
 }
 
 .notice img {

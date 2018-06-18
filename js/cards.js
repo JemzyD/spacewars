@@ -12,40 +12,40 @@ var cardsProperties = {
   'see-the-future': 'Peek at the 3 upcoming cards from the Draw Pile.',
   'aggro': 'Draw a card from the bottom of the Draw Pile.',
   'defuse': 'Save yourself from the exploding Death Star.'
-}
+};
 
 // function of each card
 function forceRun () {
   this.type = 'force-run'
-}
+};
 
 function deathStar () {
   this.type = 'death-star'
-}
+};
 
 function defuse () {
   this.type = 'defuse'
-}
+};
 
 function forcePush () {
   this.type = 'force-push'
-}
+};
 
 function attack () {
   this.type = 'attack'
-}
+};
 
 function seeTheFuture () {
   this.type = 'see-the-future'
-}
+};
 
 function aggro () {
   this.type = 'aggro'
-}
+};
 
 function mindTrick () {
   this.type = 'mind-trick'
-}
+};
 
 // Cards Methods
 // The JavaScript prototype property also allows you to add new methods to objects constructors
@@ -54,8 +54,8 @@ function mindTrick () {
 // So when this._id = id; is executed it’s actually assigning the id argument to the new el object that new Element(...) created.
 
 forceRun.prototype.render = function () {
-  game.shuffle()
-}
+  game.shuffle(this)
+};
 
 seeTheFuture.prototype.render = function () {
   console.log('See The Future Started')
@@ -63,15 +63,15 @@ seeTheFuture.prototype.render = function () {
   if (game.currentPlayer === 0) {
     showTopCards()
   } else {
-    game.knownCards = game.drawingPile.slice(0, 3)
+    game.knownCards = drawingPile.slice(0, 3)
   }
-}
+};
 
 forcePush.prototype.render = function () {
   console.log('Force Push Started')
   game.checkTurns()
   console.log('Force Push Ended, current player is', game.currentPlayer)
-}
+};
 
 defuse.prototype.render = function () {
   console.log('Defuse Started')
@@ -80,7 +80,7 @@ defuse.prototype.render = function () {
   game.explosionStatus = false
   hideExplosive()
 
-  if (game.drawingPile[0].type === 'death-star') {
+  if (drawingPile[0].type === 'death-star') {
     if (game.currentPlayer === 0) {
       showSelect()
     } else {
@@ -89,7 +89,7 @@ defuse.prototype.render = function () {
     }
   }
   console.log('Defuse Ended')
-}
+};
 
 attack.prototype.render = function () {
   console.log('Attack Cards Started')
@@ -100,7 +100,7 @@ attack.prototype.render = function () {
     game.noOfTurn += 2
   }
   console.log('Attack Cards Ended, current player is', game.currentPlayer)
-}
+};
 
 var countDown
 var time
@@ -128,14 +128,14 @@ deathStar.prototype.render = function () {
   }, 100)
 
   console.log('explosion Ended')
-}
+};
 
 aggro.prototype.render = function () {
   console.log('draw', this)
   console.log('Aggro Started')
-  game.player[game.currentPlayer].drawCard(game.drawingPile.length - 1)
+  game.player[game.currentPlayer].drawCard(drawingPile.length - 1)
   console.log('Aggro Ended')
-}
+};
 
 mindTrick.prototype.render = function () {
   console.log('Mind Trick Cards Started')
@@ -144,4 +144,4 @@ mindTrick.prototype.render = function () {
   game.player[game.currentPlayer].cards.push(game.player[1 - game.currentPlayer].cards[num])
   game.player[1 - game.currentPlayer].cards.splice(num, 1)
   console.log('Mind Trick Ended')
-}
+};
