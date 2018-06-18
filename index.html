@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" orientation="landscape">
+    <link rel="shortcut icon" type='image/png' href="./img/title-logo.png"/>
+    <title>SPACE WARS</title>
+
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+
+
+    <script src="./js/cards.js"></script>
+    <script src="./js/player.js"></script>
+    <script src='./js/game.js'></script>
+    <script src='./js/computer-ai.js'></script>
+    <script src="./js/main.js"></script>
+  </head>
+  <body>
+
+<div id="wrapper">
+  <div class='main'>
+    <img src="./img/main-logo.jpg" class="logo">
+
+    <div class='instructions'>
+      <div class='how-to-play'>
+        <h1>INSTRUCTIONS</h1>
+        <ol>
+          <li>Pick a card to play from your hand and place it face up in the discard pile. You can play a card or nothing at all.</li>
+          <li>Follow the instructions and you can play up to as many cards as you like.</li>
+          <li>To end your turn, you must draw a card from the discard pile into your hand and let's hope it's not an Exploding Death Star.</li>
+        </ol>
+
+      </div>
+      <div class='rules'>
+        <h1>RULES</h1>
+        <p>The deck will contain an exploding Death Star card. You and the Computer will take turns drawing cards until someone draws an exploding Death Star card and cannot defuse it.</p>
+        <img src='./img/explosion.jpg'>
+      </div>
+      <div class='cards'>
+          <h1>CARDS</h1>
+          <p></p>
+          <div id='death-star'>
+          </div>
+          <div id='attack'>
+          </div>
+          <div id='force-push'>
+          </div>
+          <div id='mind-trick'>
+          </div>
+          <div id='force-run'>
+          </div>
+          <div id='see-the-future'>
+          </div>
+          <div id='aggro'>
+          </div>
+          <div id='defuse'>
+          </div>
+
+      </div>
+    </div>
+
+    <div class='play'>
+      <button>Let's Hit It!</button>
+    </div>
+
+
+  </div>
+
+  <div class='game'>
+  <img src="./img/main-logo.jpg" class="logo">
+  <div class="player1"><div class="avatar avatar1"></div></div>
+
+  <div class='container'>
+    <div class='flexFirst'>
+      <div class="explosive-meter">
+        <h1></h1>
+      </div>
+      <div class='container relative'>
+      </div>
+    </div>
+
+
+    <div class="discardPile dotted-border">
+    </div>
+
+
+    <div class="notice">
+      <h3></h3>
+    </div>
+  </div>
+
+    <div class="player0">
+      <div class="avatar avatar0"></div>
+      <div class="player0Cards"></div>
+    </div>
+
+    <div class="explosive">
+      <h1>SPACE WARS</h1>
+      <div id='death-star' class='cardBox'></div>
+      <div id='time' class='cardBox'></div>
+      <div id='placeYourDefuse' class='cardBox'></div>
+    </div>
+
+
+    <div class="gameOver">
+      <h1>GAME OVER!</h1>
+      <div id='avatar0' class='cardBox'></div>
+      <div id='avatar1' class='cardBox'></div>
+      <button id='restart'> PLAY AGAIN?</button>
+    </div>
+
+    <div class='yourTurn'>
+    </div>
+
+    <div class="seeTheFutureBoard">
+      <h1>SEE THE FUTURE</h1>
+      <div  class='cardBox'></div>
+      <div  class='cardBox'></div>
+      <div  class='cardBox'></div>
+    </div>
+  </div>
+
+  <div class='select'>
+    <h1>Where would you like to place the DEATH STAR?</h1>
+    <button> Top </button>
+    <button> Second </button>
+    <button> Third </button>
+    <button> Bottom </button>
+    <button> Random </button>
+  </div>
+
+</div>
+
+  </body>
+</html>
