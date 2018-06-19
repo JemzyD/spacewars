@@ -244,7 +244,7 @@
       }
     }, 3000)
 
-    $('.explosive-meter h1').text(Math.round(drawingPile.length) + ' cards')
+    $('.explosive-meter h1').text((drawingPile.length) + ' cards')
   }
 
   function updateCards () {

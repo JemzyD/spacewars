@@ -65,7 +65,7 @@ function computerPlayer () {
       }
 
       if (game.player[0].moves[0] === 'defuse') {
-        if (Object.keys(currentCards).includes('see-the-future')) { currentCards['see-the-future'] += 100 * randomness() }
+        if (Object.keys(currentCards).includes('mind-trick')) { currentCards['mind-trick'] += 100 * randomness() }
         if (Object.keys(currentCards).includes('force-run')) { currentCards['force-run'] += 80 * randomness() }
         if (Object.keys(currentCards).includes('force-push')) { currentCards['force-push'] += 100 * randomness() }
         currentCards['draw'] += 80 * randomness()
@@ -130,7 +130,7 @@ function computerPlayer () {
       }
     }
   };
-
+// replaces the -500 with the highest probability and the '' with the corresponding key
   var max = ['', -500]
   for (var key in currentCards) {
     if (currentCards[key] > max[1]) {
@@ -153,7 +153,7 @@ function computerPlayer () {
   }
 };
 
-// returns a random number from 0.5-1
+// returns a random number from 0.1-1
 function randomness () {
   var randomValue = Math.random()
   if (randomValue < 0.5) {
